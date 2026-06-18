@@ -5,13 +5,13 @@
 ![Tableau](https://img.shields.io/badge/Tableau-Dashboard-purple)
 ![SQL](https://img.shields.io/badge/SQL-Analytics-green)
 
-📌 Project Overview
+### 📌 Project Overview
 
 This project demonstrates the design and implementation of a modern Data Engineering solution using the Medallion Architecture (Bronze, Silver, Gold) with PySpark, Snowflake, and Tableau.
 
 The pipeline ingests raw retail sales data, performs data quality validations and transformations, loads curated datasets into Snowflake, builds a dimensional data model using a Star Schema, and delivers business insights through interactive Tableau dashboards.
 
-🎯 Business Objective
+### 🎯 Business Objective
 
 Retail organizations generate large volumes of transactional data from stores, departments, and promotions.
 
@@ -40,7 +40,7 @@ Raw CSV Files
 → Tableau Dashboards
 → Business Insights
 
-🛠️ Technology Stack
+## 🛠️ Technology Stack
 Technology                                         Purpose
 
 Python                                             Core Programming
@@ -52,7 +52,7 @@ Tableau                                            Business Intelligence & Visua
 GitHub                                             Version Control
 YAML                                               Configuration Management
 
-🥉 Bronze Layer
+## 🥉 Bronze Layer
 
 Purpose
 
@@ -79,7 +79,7 @@ Output
 
 Stored in Parquet format.
 
-🥈 Silver Layer
+## 🥈 Silver Layer
 
 Purpose
 
@@ -100,7 +100,7 @@ Output
 * silver_features
 * silver_sales
 
-🥇 Gold Layer
+## 🥇 Gold Layer
 
 Purpose
 
@@ -124,7 +124,7 @@ GOLD_HOLIDAY_IMPACT_ANALYSIS
 
 Holiday vs Non-Holiday sales analysis.
 
-❄️ Snowflake Data Warehouse
+## ❄️ Snowflake Data Warehouse
 
 All Bronze, Silver, and Gold datasets are loaded into Snowflake using Python and the Snowflake Connector.
 
@@ -141,7 +141,7 @@ Benefits
 * Fast Query Performance
 * Integration with Tableau
 
-⭐ Star Schema Design
+## ⭐ Star Schema Design
 
 A dimensional data model was created in Snowflake to support analytical workloads.
 
@@ -239,7 +239,7 @@ A small number of departments generate a significant portion of overall revenue.
 
 
 
-📁 Project Structure
+## 📁 Project Structure
 retail-lakehouse-pipeline/
 
 ├── config/
@@ -273,7 +273,7 @@ retail-lakehouse-pipeline/
 ├── requirements.txt
 └── README.md
 
-🚀 Key Achievements
+## 🚀 Key Achievements
 
 * Built an end-to-end Data Engineering pipeline
 * Implemented Medallion Architecture
@@ -284,7 +284,7 @@ retail-lakehouse-pipeline/
 * Created Tableau dashboards for business reporting
 * Generated meaningful business insights
 
-🔮 Future Enhancements
+## 🔮 Future Enhancements
 
 * Apache Airflow Orchestration
 * Snowpipe Automation
@@ -294,7 +294,7 @@ retail-lakehouse-pipeline/
 * CI/CD Pipeline Deployment
 * Real-Time Data Ingestion
 
-👨‍💻 Author
+### 👨‍💻 Author
 
 Neela Konda Reddy Beeram
 
