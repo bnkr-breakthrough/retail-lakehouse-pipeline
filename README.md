@@ -1,4 +1,4 @@
-🛒 Retail Lakehouse Pipeline | End-to-End Data Engineering Project
+#🛒 Retail Lakehouse Pipeline | End-to-End Data Engineering Project
 ![Python](https://img.shields.io/badge/Python-3.13-blue)
 ![PySpark](https://img.shields.io/badge/PySpark-4.0-orange)
 ![Snowflake](https://img.shields.io/badge/Snowflake-Data%20Warehouse-blue)
