@@ -1,0 +1,8 @@
+account: IZPMIOP-ZE46213
+user: BNKR2SNOWFLAKE
+password: *********
+
+warehouse: RETAIL_WH
+database: RETAIL_LAKEHOUSE_DB
+default_schema: GOLD
+role: ACCOUNTADMIN

@@ -1,0 +1,18 @@
+# Snowflake Credentials
+config/snowflake_config.yaml
+
+# Python
+__pycache__/
+*.pyc
+
+# Mac
+.DS_Store
+
+# VS Code
+.vscode/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Environment Files
+.env
