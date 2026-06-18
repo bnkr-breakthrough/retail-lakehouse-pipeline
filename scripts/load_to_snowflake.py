@@ -1,15 +1,19 @@
+import os
 import yaml
 import pandas as pd
 import snowflake.connector
 
 from snowflake.connector.pandas_tools import write_pandas
 
+DATA_PATH = os.getenv("DATA_PATH", "../data")
+CONFIG_PATH = os.getenv("CONFIG_PATH", "../config")
+
 
 # ==================================
 # Load Snowflake Config
 # ==================================
 
-with open("../config/snowflake_config.yaml", "r") as file:
+with open(f"{CONFIG_PATH}/snowflake_config.yaml", "r") as file:
     config = yaml.safe_load(file)
 
 
@@ -72,21 +76,23 @@ def load_parquet_to_snowflake(
 tables_to_load = [
 
     # Bronze
-    ("../data/bronze/bronze_stores", "BRONZE", "BRONZE_STORES"),
-    ("../data/bronze/bronze_features", "BRONZE", "BRONZE_FEATURES"),
-    ("../data/bronze/bronze_sales", "BRONZE", "BRONZE_SALES"),
+    (f"{DATA_PATH}/bronze/bronze_stores", "BRONZE", "BRONZE_STORES"),
+    (f"{DATA_PATH}/bronze/bronze_features", "BRONZE", "BRONZE_FEATURES"),
+    (f"{DATA_PATH}/bronze/bronze_sales", "BRONZE", "BRONZE_SALES"),
 
     # Silver
-    ("../data/silver/silver_stores", "SILVER", "SILVER_STORES"),
-    ("../data/silver/silver_features", "SILVER", "SILVER_FEATURES"),
-    ("../data/silver/silver_sales", "SILVER", "SILVER_SALES"),
+    (f"{DATA_PATH}/silver/silver_stores", "SILVER", "SILVER_STORES"),
+    (f"{DATA_PATH}/silver/silver_features", "SILVER", "SILVER_FEATURES"),
+    (f"{DATA_PATH}/silver/silver_sales", "SILVER", "SILVER_SALES"),
 
     # Gold
-    ("../data/gold/gold_store_performance", "GOLD", "GOLD_STORE_PERFORMANCE"),
-    ("../data/gold/gold_department_performance",
+    (f"{DATA_PATH}/gold/gold_store_performance",
+     "GOLD", "GOLD_STORE_PERFORMANCE"),
+    (f"{DATA_PATH}/gold/gold_department_performance",
      "GOLD", "GOLD_DEPARTMENT_PERFORMANCE"),
-    ("../data/gold/gold_monthly_sales_trend", "GOLD", "GOLD_MONTHLY_SALES_TREND"),
-    ("../data/gold/gold_holiday_impact_analysis",
+    (f"{DATA_PATH}/gold/gold_monthly_sales_trend",
+     "GOLD", "GOLD_MONTHLY_SALES_TREND"),
+    (f"{DATA_PATH}/gold/gold_holiday_impact_analysis",
      "GOLD", "GOLD_HOLIDAY_IMPACT_ANALYSIS")
 ]
 

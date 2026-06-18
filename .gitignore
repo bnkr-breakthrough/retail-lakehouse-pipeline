@@ -16,3 +16,20 @@ __pycache__/
 
 # Environment Files
 .env
+
+# Airflow
+airflow/logs/
+airflow/airflow.db
+
+# Spark / Parquet Outputs
+data/bronze/**/*.parquet
+data/bronze/**/*.crc
+
+data/silver/**/*.parquet
+data/silver/**/*.crc
+
+data/gold/**/*.parquet
+data/gold/**/*.crc
+
+# Optional Spark metadata
+**/_SUCCESS

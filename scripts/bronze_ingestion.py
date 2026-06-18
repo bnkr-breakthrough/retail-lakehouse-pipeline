@@ -1,5 +1,8 @@
+import os
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import current_timestamp, lit
+
+BASE_PATH = os.getenv("DATA_PATH", "../data")
 
 # Create Spark Session
 
@@ -12,9 +15,9 @@ spark = (
 
 def ingest_to_bronze(source_file, target_folder):
 
-    landing_path = f"../data/landing/{source_file}"
+    landing_path = f"{BASE_PATH}/landing/{source_file}"
 
-    bronze_path = f"../data/bronze/{target_folder}"
+    bronze_path = f"{BASE_PATH}/bronze/{target_folder}"
 
     print(f"\nProcessing {source_file}")
 

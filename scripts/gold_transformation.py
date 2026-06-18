@@ -1,3 +1,4 @@
+import os
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import (
     sum,
@@ -8,6 +9,8 @@ from pyspark.sql.functions import (
     month
 )
 
+BASE_PATH = os.getenv("DATA_PATH", "../data")
+
 spark = (
     SparkSession.builder
     .appName("Retail Lakehouse Gold Layer")
@@ -15,9 +18,9 @@ spark = (
 )
 
 silver_sales = spark.read.parquet(
-    "../data/silver/silver_sales"
+    f"{BASE_PATH}/silver/silver_sales"
 )
-"""
+
 gold_store_performance = (
     silver_sales
     .groupBy("store")
@@ -33,7 +36,7 @@ gold_store_performance.printSchema()
 
 gold_store_performance.show(10, truncate=False)
 gold_store_performance.write.mode("overwrite").parquet(
-    "../data/gold/gold_store_performance"
+    f"{BASE_PATH}/gold/gold_store_performance"
 )
 
 print("\nGold Store Performance Created Successfully")
@@ -57,7 +60,7 @@ gold_department_performance.printSchema()
 
 gold_department_performance.show(10, truncate=False)
 gold_department_performance.write.mode("overwrite").parquet(
-    "../data/gold/gold_department_performance"
+    f"{BASE_PATH}/gold/gold_department_performance"
 )
 
 print("\nGold Department Performance Created Successfully")
@@ -94,11 +97,11 @@ gold_monthly_sales_trend.printSchema()
 
 gold_monthly_sales_trend.show(20, truncate=False)
 gold_monthly_sales_trend.write.mode("overwrite").parquet(
-    "../data/gold/gold_monthly_sales_trend"
+    f"{BASE_PATH}/gold/gold_monthly_sales_trend"
 )
 
 print("\nGold Monthly Sales Trend Created Successfully")
-"""
+
 
 # ==================================
 # Gold Holiday Impact Analysis
@@ -119,7 +122,7 @@ gold_holiday_impact_analysis.printSchema()
 
 gold_holiday_impact_analysis.show(truncate=False)
 gold_holiday_impact_analysis.write.mode("overwrite").parquet(
-    "../data/gold/gold_holiday_impact_analysis"
+    f"{BASE_PATH}/gold/gold_holiday_impact_analysis"
 )
 
 print("\nGold Holiday Impact Analysis Created Successfully")

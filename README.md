@@ -5,13 +5,21 @@
 ![Tableau](https://img.shields.io/badge/Tableau-Dashboard-purple)
 ![SQL](https://img.shields.io/badge/SQL-Analytics-green)
 
+<<<<<<< HEAD
 ### 📌 Project Overview
+=======
+## 📌 Project Overview
+>>>>>>> b3dd189 (Retail Lakehouse Pipeline V2 - Docker and Airflow Orchestration)
 
 This project demonstrates the design and implementation of a modern Data Engineering solution using the Medallion Architecture (Bronze, Silver, Gold) with PySpark, Snowflake, and Tableau.
 
 The pipeline ingests raw retail sales data, performs data quality validations and transformations, loads curated datasets into Snowflake, builds a dimensional data model using a Star Schema, and delivers business insights through interactive Tableau dashboards.
 
+<<<<<<< HEAD
 ### 🎯 Business Objective
+=======
+## 🎯 Business Objective
+>>>>>>> b3dd189 (Retail Lakehouse Pipeline V2 - Docker and Airflow Orchestration)
 
 Retail organizations generate large volumes of transactional data from stores, departments, and promotions.
 
@@ -25,7 +33,7 @@ The objective of this project is to:
 * Visualize business KPIs using Tableau
 * Generate actionable insights for business stakeholders
 
-# 🏗️ Solution Architecture
+## 🏗️ Solution Architecture
 
 ![Architecture Diagram](drawio/architecture_diagram.png)
 
@@ -54,7 +62,7 @@ YAML                                               Configuration Management
 
 ## 🥉 Bronze Layer
 
-Purpose
+### Purpose
 
 The Bronze Layer stores raw ingested data with minimal modifications.
 
@@ -81,7 +89,7 @@ Stored in Parquet format.
 
 ## 🥈 Silver Layer
 
-Purpose
+### Purpose
 
 The Silver Layer performs data cleansing, standardization, and quality validation.
 
@@ -102,7 +110,7 @@ Output
 
 ## 🥇 Gold Layer
 
-Purpose
+### Purpose
 
 The Gold Layer contains business-ready datasets optimized for analytics and reporting.
 
@@ -145,8 +153,8 @@ Benefits
 
 A dimensional data model was created in Snowflake to support analytical workloads.
 
-Fact Table
-FACT_SALES
+## Fact Table
+### FACT_SALES
 
 Column
 STORE_KEY
@@ -155,8 +163,8 @@ DATE_KEY
 WEEKLY_SALES
 IS_HOLIDAY
 
-Dimension Tables
-DIM_STORE
+## Dimension Tables
+### DIM_STORE
 
 Column
 STORE_KEY
@@ -164,13 +172,13 @@ STORE_ID
 TYPE
 SIZE
 
-DIM_DEPARTMENT
+### DIM_DEPARTMENT
 
 Column
 DEPARTMENT_KEY
 DEPARTMENT_ID
 
-DIM_DATE
+### DIM_DATE
 
 Column
 DATE_KEY
@@ -183,9 +191,9 @@ MONTH_NAME
 YEAR_MONTH
 WEEK_OF_YEAR
 
-Data Model
+## Data Model
 
-FACT_SALES connects to:
+### FACT_SALES connects to:
 
 * DIM_STORE
 * DIM_DEPARTMENT
@@ -195,7 +203,7 @@ using surrogate keys.
 
 This design improves analytical performance and follows industry-standard dimensional modeling practices.
 
-# 📊 Tableau Dashboard & Business Insights
+## 📊 Tableau Dashboard & Business Insights
 
 The Star Schema was connected directly to Tableau Desktop to build business dashboards.
 
@@ -284,9 +292,46 @@ retail-lakehouse-pipeline/
 * Created Tableau dashboards for business reporting
 * Generated meaningful business insights
 
+<<<<<<< HEAD
+=======
+## Apache Airflow Orchestration
+
+To automate the end-to-end data pipeline, Apache Airflow was integrated into the solution and deployed using Docker.
+
+## Workflow Orchestration
+
+The Airflow DAG orchestrates the complete Medallion Architecture workflow:
+
+Bronze Ingestion → Silver Transformation → Gold Transformation → Snowflake Load
+
+## DAG Components
+
+* Bronze Layer Ingestion
+* Silver Layer Data Quality & Standardization
+* Gold Layer Business Aggregations
+* Snowflake Data Warehouse Load
+
+## Airflow Benefits
+
+* Automated Pipeline Execution
+* Dependency Management
+* Task Monitoring
+* Retry & Failure Handling
+* Operational Visibility
+* Production-Ready Orchestration Framework
+
+## Airflow DAG Graph
+![Airflow DAG Graph](screenshots/airflow_dag_graph.png)
+
+## Successful Pipeline Execution
+![Successful Pipeline Execution](screenshots/airflow_success_run.png)
+
+## Snowflake Load Task Logs
+![Snowflake Load Task Logs](screenshots/airflow_snowflake_task_logs.png)
+
+>>>>>>> b3dd189 (Retail Lakehouse Pipeline V2 - Docker and Airflow Orchestration)
 ## 🔮 Future Enhancements
 
-* Apache Airflow Orchestration
 * Snowpipe Automation
 * Incremental Data Loading
 * dbt Transformations

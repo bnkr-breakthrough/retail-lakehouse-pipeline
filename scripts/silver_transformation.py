@@ -1,5 +1,8 @@
+import os
 from pyspark.sql import SparkSession
 from pyspark.sql.functions import col, when
+
+BASE_PATH = os.getenv("DATA_PATH", "../data")
 
 
 spark = (
@@ -9,17 +12,17 @@ spark = (
 )
 
 bronze_stores = spark.read.parquet(
-    "../data/bronze/bronze_stores"
+    f"{BASE_PATH}/bronze/bronze_stores"
 )
 
 bronze_features = spark.read.parquet(
-    "../data/bronze/bronze_features"
+    f"{BASE_PATH}/bronze/bronze_features"
 )
 
 bronze_sales = spark.read.parquet(
-    "../data/bronze/bronze_sales"
+    f"{BASE_PATH}/bronze/bronze_sales"
 )
-"""
+
 # ==================================
 # Silver Stores Transformation
 # ==================================
@@ -47,7 +50,7 @@ print(f"Stores After Deduplication: {after_count}")
 print(f"Duplicates Removed: {duplicates_removed}")
 
 silver_stores.write.mode("overwrite").parquet(
-    "../data/silver/silver_stores"
+    f"{BASE_PATH}/silver/silver_stores"
 )
 
 print("\nSilver Stores Created Successfully")
@@ -56,13 +59,12 @@ silver_stores.printSchema()
 
 silver_stores.show(5, truncate=False)
 
-"""
 
 # ==================================
 # Silver Features Transformation
 # ==================================
 
-"""
+
 silver_features = bronze_features.select(
     col("Store").alias("store"),
     col("Date").alias("date"),
@@ -142,11 +144,11 @@ silver_features.show(5, truncate=False)
 
 
 silver_features.write.mode("overwrite").parquet(
-    "../data/silver/silver_features"
+    f"{BASE_PATH}/silver/silver_features"
 )
 
 print("\nSilver Features Created Successfully")
-"""
+
 
 # ==================================
 # Silver Sales Transformation
@@ -187,7 +189,7 @@ print(
 )
 
 silver_sales.write.mode("overwrite").parquet(
-    "../data/silver/silver_sales"
+    f"{BASE_PATH}/silver/silver_sales"
 )
 
 print("\nSilver Sales Created Successfully")
