@@ -5,9 +5,8 @@
 ![Tableau](https://img.shields.io/badge/Tableau-Dashboard-purple)
 ![SQL](https://img.shields.io/badge/SQL-Analytics-green)
 
-<<<<<<< HEAD
-### 📌 Project Overview
-=======
+
+
 ## 📌 Project Overview
 
 
@@ -15,9 +14,7 @@ This project demonstrates the design and implementation of a modern Data Enginee
 
 The pipeline ingests raw retail sales data, performs data quality validations and transformations, loads curated datasets into Snowflake, builds a dimensional data model using a Star Schema, and delivers business insights through interactive Tableau dashboards.
 
-<<<<<<< HEAD
-### 🎯 Business Objective
-=======
+
 ## 🎯 Business Objective
 
 
@@ -292,8 +289,7 @@ retail-lakehouse-pipeline/
 * Created Tableau dashboards for business reporting
 * Generated meaningful business insights
 
-<<<<<<< HEAD
-=======
+
 ## Apache Airflow Orchestration
 
 To automate the end-to-end data pipeline, Apache Airflow was integrated into the solution and deployed using Docker.
