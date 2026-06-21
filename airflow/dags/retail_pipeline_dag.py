@@ -34,6 +34,22 @@ with DAG(
         """
     )
 
+    audit = BashOperator(
+        task_id="data_quality_audit",
+        bash_command="""
+        export DATA_PATH=/opt/airflow/data &&
+        python /opt/airflow/scripts/data_quality_audit.py
+        """
+    )
+
+    incremental = BashOperator(
+        task_id="incremental_processing",
+        bash_command="""
+        export DATA_PATH=/opt/airflow/data &&
+        python /opt/airflow/scripts/incremental_load.py
+        """
+    )
+
     snowflake = BashOperator(
         task_id="load_to_snowflake",
         bash_command="""
@@ -43,4 +59,4 @@ with DAG(
         """
     )
 
-    bronze >> silver >> gold >> snowflake
+    bronze >> silver >> gold >> audit >> incremental >> snowflake

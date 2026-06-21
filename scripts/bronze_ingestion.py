@@ -28,6 +28,14 @@ def ingest_to_bronze(source_file, target_folder):
         .csv(landing_path)
     )
 
+    # Data Quality Check
+    row_count = df.count()
+
+    if row_count == 0:
+        raise Exception(
+            f"{source_file} is empty"
+        )
+
     df = (
         df
         .withColumn(
@@ -44,7 +52,7 @@ def ingest_to_bronze(source_file, target_folder):
 
     print(f"Successfully created {target_folder}")
 
-    print(f"Row Count: {df.count()}")
+    print(f"Row Count: {row_count}")
 
 
 ingest_to_bronze(

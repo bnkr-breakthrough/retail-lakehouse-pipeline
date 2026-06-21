@@ -30,6 +30,12 @@ gold_store_performance = (
         count("*").alias("transaction_count")
     )
 )
+
+if gold_store_performance.count() == 0:
+    raise Exception(
+        "Gold Store Performance table is empty"
+    )
+
 print("\n===== GOLD STORE PERFORMANCE =====")
 
 gold_store_performance.printSchema()
@@ -54,6 +60,12 @@ gold_department_performance = (
         count("*").alias("transaction_count")
     )
 )
+
+if gold_department_performance.count() == 0:
+    raise Exception(
+        "Gold Department Performance table is empty"
+    )
+
 print("\n===== GOLD DEPARTMENT PERFORMANCE =====")
 
 gold_department_performance.printSchema()
@@ -91,6 +103,13 @@ gold_monthly_sales_trend = (
         "month"
     )
 )
+if gold_monthly_sales_trend.count() == 0:
+
+    raise Exception(
+
+        "Gold Monthly Sales Trend table is empty"
+
+    )
 print("\n===== GOLD MONTHLY SALES TREND =====")
 
 gold_monthly_sales_trend.printSchema()
@@ -116,6 +135,12 @@ gold_holiday_impact_analysis = (
         count("*").alias("transaction_count")
     )
 )
+
+if gold_holiday_impact_analysis.count() == 0:
+    raise Exception(
+        "Gold Holiday Impact Analysis table is empty"
+    )
+
 print("\n===== GOLD HOLIDAY IMPACT ANALYSIS =====")
 
 gold_holiday_impact_analysis.printSchema()

@@ -35,6 +35,10 @@ silver_stores = bronze_stores.select(
     col("source_file_name")
 )
 before_count = silver_stores.count()
+if before_count == 0:
+    raise Exception(
+        "Silver Stores table is empty"
+    )
 
 print(f"\nStores Before Deduplication: {before_count}")
 
@@ -45,6 +49,11 @@ silver_stores = silver_stores.dropDuplicates(
 after_count = silver_stores.count()
 
 duplicates_removed = before_count - after_count
+
+if duplicates_removed > 100:
+    raise Exception(
+        f"Duplicate threshold exceeded: {duplicates_removed}"
+    )
 
 print(f"Stores After Deduplication: {after_count}")
 print(f"Duplicates Removed: {duplicates_removed}")
@@ -135,6 +144,27 @@ silver_features = (
         col("unemployment").cast("double")
     )
 )
+before_count = silver_features.count()
+silver_features = silver_features.dropDuplicates(
+    ["store", "date"]
+)
+after_count = silver_features.count()
+
+duplicates_removed = before_count - after_count
+
+if duplicates_removed > 100:
+    raise Exception(
+        f"Features duplicate threshold exceeded: {duplicates_removed}"
+    )
+if after_count == 0:
+    raise Exception(
+        "Silver Features table is empty"
+    )
+print("\n===== FEATURES DUPLICATE ANALYSIS =====")
+
+print(f"Before Deduplication: {before_count}")
+print(f"After Deduplication: {after_count}")
+print(f"Duplicates Removed: {duplicates_removed}")
 
 print("\n===== SILVER FEATURES SCHEMA =====")
 
@@ -165,6 +195,10 @@ silver_sales = bronze_sales.select(
 )
 
 before_count = silver_sales.count()
+if before_count == 0:
+    raise Exception(
+        "Silver Sales table is empty"
+    )
 
 silver_sales = silver_sales.dropDuplicates(
     ["store", "dept", "date"]
@@ -173,6 +207,11 @@ silver_sales = silver_sales.dropDuplicates(
 after_count = silver_sales.count()
 
 duplicates_removed = before_count - after_count
+
+if duplicates_removed > 100:
+    raise Exception(
+        f"Sales duplicate threshold exceeded: {duplicates_removed}"
+    )
 
 print("\n===== SALES DUPLICATE ANALYSIS =====")
 
@@ -183,6 +222,11 @@ print(f"Duplicates Removed: {duplicates_removed}")
 negative_sales_count = silver_sales.filter(
     col("weekly_sales") < 0
 ).count()
+
+if negative_sales_count > 5000:
+    raise Exception(
+        f"Negative sales threshold exceeded: {negative_sales_count}"
+    )
 
 print(
     f"Negative Weekly Sales Records: {negative_sales_count}"
