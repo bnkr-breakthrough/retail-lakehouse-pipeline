@@ -9,7 +9,7 @@
 ### 📌 Project Overview
 =======
 ## 📌 Project Overview
->>>>>>> b3dd189 (Retail Lakehouse Pipeline V2 - Docker and Airflow Orchestration)
+
 
 This project demonstrates the design and implementation of a modern Data Engineering solution using the Medallion Architecture (Bronze, Silver, Gold) with PySpark, Snowflake, and Tableau.
 
@@ -19,7 +19,7 @@ The pipeline ingests raw retail sales data, performs data quality validations an
 ### 🎯 Business Objective
 =======
 ## 🎯 Business Objective
->>>>>>> b3dd189 (Retail Lakehouse Pipeline V2 - Docker and Airflow Orchestration)
+
 
 Retail organizations generate large volumes of transactional data from stores, departments, and promotions.
 
@@ -329,15 +329,105 @@ Bronze Ingestion → Silver Transformation → Gold Transformation → Snowflake
 ## Snowflake Load Task Logs
 ![Snowflake Load Task Logs](screenshots/airflow_snowflake_task_logs.png)
 
->>>>>>> b3dd189 (Retail Lakehouse Pipeline V2 - Docker and Airflow Orchestration)
-## 🔮 Future Enhancements
+# 🚀 V3 Enhancements – Data Quality, Audit Framework & Incremental Processing
 
-* Snowpipe Automation
-* Incremental Data Loading
-* dbt Transformations
-* Data Quality Monitoring Framework
-* CI/CD Pipeline Deployment
-* Real-Time Data Ingestion
+The Retail Lakehouse Pipeline was further enhanced with production-inspired Data Engineering capabilities focused on data reliability, monitoring, and incremental processing.
+
+## ✅ Data Quality Framework
+
+### Implemented automated data quality validations across Bronze and Silver layers:
+
+* Row Count Validation
+* Duplicate Detection
+* Empty Dataset Validation
+* Negative Sales Threshold Validation
+* Pipeline Failure on Quality Threshold Breach
+
+## ✅ Audit Layer
+
+### Created a centralized audit framework to track pipeline health and validation results.
+
+Audit checks include:
+
+Pipeline Layer                          Validation
+
+Bronze Stores                           Row Count Check
+Bronze Features                         Row Count Check
+Bronze Sales                            Row Count Check
+Silver Stores                           Row Count Check
+Silver Features                         Row Count Check
+Silver Sales                            Negative Sales Check
+Gold Store Performance                  Row Count Check
+Gold Department Performance             Row Count Check
+Gold Monthly Sales Trend                Row Count Check
+Gold Holiday Impact Analysis            Row Count Check
+
+Audit output captures:
+
+* Pipeline Name
+* Validation Type
+* Actual Value
+* PASS / FAIL Status
+* Audit Timestamp
+
+## ✅ Incremental Processing with Watermarks
+
+### Implemented watermark-based incremental processing to simulate production ETL patterns.
+
+Features:
+
+* Maintains last processed business date
+* Detects newly arrived records
+* Prevents unnecessary full dataset processing
+* Updates watermark automatically after successful processing
+* Supports scalable incremental ingestion design
+
+#### Example Watermark:
+last_processed_date
+2012-10-26
+
+## ✅ Airflow Workflow Enhancement
+
+### The Airflow DAG was extended to include Data Quality and Incremental Processing stages.
+
+Final Workflow:
+Bronze Ingestion
+        ↓
+Silver Transformation
+        ↓
+Gold Transformation
+        ↓
+Data Quality Audit
+        ↓
+Incremental Processing
+        ↓
+Snowflake Load
+
+## 📊 Monitoring & Observability
+
+Apache Airflow provides:
+
+* DAG Visualization
+* Task Dependency Management
+* Execution Monitoring
+* Task-Level Logging
+* Audit Tracking
+* Incremental Processing Visibility
+
+## 🏗️ Production Features Implemented
+
+* Medallion Architecture (Bronze, Silver, Gold)
+* PySpark Data Processing
+* Snowflake Data Warehouse Integration
+* Tableau Reporting & Analytics
+* Docker Containerization
+* Apache Airflow Orchestration
+* Data Quality Framework
+* Audit Layer
+* Watermark-Based Incremental Processing
+* End-to-End Pipeline Monitoring
+
+
 
 ### 👨‍💻 Author
 
